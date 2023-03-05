@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const routes = require('./routes/routes');
+const cors = require('cors'); 
 
 const PORT = process.env.PORT || 8080;
 
@@ -15,6 +16,9 @@ app.use("/api", routes);
 app.get('*', (req,res) => {
     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 })
+
+// Use cors middleware
+app.use(cors());
 
 app.listen(PORT, () => {
     console.log(`Server listening on Port ${PORT}`);
