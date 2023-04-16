@@ -1,40 +1,9 @@
-import { useState, useEffect } from 'react';
 import Notification from './Notification';
+import useFetch from './useFetch';
 
 const Home = () => {
 
-    const [data, setData] = useState(null);
-    const [error,setError] = useState(false);
-    const [refresh, setRefresh] = useState(false);
-    useEffect(() => {
-        fetch("/api")
-        .then((res) => res.json())
-        .then((data) => {
-            const items = data.message.map((row)=> {
-                return (
-                    <tr>
-                    <td>{row.Id}</td>
-                    <td>{row.App}</td>
-                    <td>{row.User}</td>
-                    <td>{row.Image}</td>
-                    <td>{row.Login}</td>
-                    <td>{row.Date}</td>
-                    </tr>
-                )
-            }
-        )
-            setData(items);
-            setError(null);
-            setRefresh(true);
-        })
-        .catch( err => {
-            if(err.name === 'AbortError'){
-                console.log('fetch aborted');
-            } else {
-                setError(err.message);
-            }            
-        })
-    }, []);
+    const {data,refresh,error} = useFetch();    
 
   return (
     <div className="home">
@@ -52,7 +21,7 @@ const Home = () => {
                 {data} 
             </table>
         }
-        <div>{refresh && <Notification />}</div> 
+        <div>{refresh && <Notification />}</div>
     </div>
   );
 

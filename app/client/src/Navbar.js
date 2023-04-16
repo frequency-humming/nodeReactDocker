@@ -5,7 +5,7 @@ const Navbar = () => {
         <nav className="navbar">
             <h1>Salesforce Experience</h1>
             <div className="links">
-                <Link to="/create" style={{
+                <Link to="/analytics" style={{
                     color: "white",
                     backgroundColor: '#f1356d',
                     borderRadius: '8px'
