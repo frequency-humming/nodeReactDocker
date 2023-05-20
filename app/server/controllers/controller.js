@@ -2,10 +2,10 @@ const {Pool} = require('pg');
 const http = require('http');
 
 const pool = new Pool ({
-    user:'admin',
-    host:'localhost',
-    database:'test_db',
-    password:'mypassword',
+    user:process.env.user,
+    host:process.env.HOSTNAME,
+    database:process.env.database,
+    password:process.env.password,
     port:5432
 });
 
