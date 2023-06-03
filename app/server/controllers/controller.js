@@ -76,26 +76,28 @@ const eventsHandler = (request, response) => {
         response.write('\n\n');
     });
   
-    setInterval(async () => {
+    const intervalId = setInterval(async () => {
         const newEvents = events.slice(-1);
         newEvents.forEach(event => {
             response.write('event: message\n');
             response.write(`data: ${event}`);
             response.write('\n\n');
         });
-        },200);
+    },200);
   
-        const clientId = Date.now();
-        const newClient = {
-        id: clientId,
-        response
-        };
-        newClient.response.setTimeout(0);
-        clients.push(newClient);
-    
-        request.on('close', () => {
+    const clientId = Date.now();
+    const newClient = {
+    id: clientId,
+    response
+    };
+
+    newClient.response.setTimeout(0);
+    clients.push(newClient);
+
+    request.on('close', () => {
         console.log(`${clientId} Connection closed`);
         clients = clients.filter(client => client.id !== clientId);
+        clearInterval(intervalId);
     });
 }
 
