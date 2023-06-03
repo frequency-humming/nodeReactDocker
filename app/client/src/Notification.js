@@ -24,7 +24,10 @@ const Notification = () => {
                 setMessages(items);
             }
         };
-    }, [messages]);
+        return () => {
+            eventSource.close();
+        };
+    }, []);
         return (
             <div>
                 <h1>Incoming</h1>
