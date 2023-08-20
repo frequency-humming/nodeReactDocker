@@ -18,6 +18,7 @@ RUN npm run build
 
 EXPOSE 8000
 
-ENTRYPOINT ["/home/app/entrypoint.sh"]
+# Used for ECS - commented out for vpc 
+#ENTRYPOINT ["/home/app/entrypoint.sh"]
 
 CMD ["node","/home/app/server/index.js"]
