@@ -44,4 +44,4 @@ jobs:
         username: ec2-user
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
-          docker run -d -p 8000:8000 docker-react
+          docker run --network=ec2public -d -p 8000:8000 docker-react
