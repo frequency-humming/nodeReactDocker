@@ -7,6 +7,8 @@ ENV NODE_ENV=production
 ENV user=admin
 ENV database=test_db
 ENV password=mypassword
+#adding for vpc
+ENV HOSTNAME=postgresdb
 
 COPY ./entrypoint.sh /home/app/
 RUN chmod +x /home/app/entrypoint.sh
