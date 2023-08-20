@@ -26,7 +26,7 @@ jobs:
         username: ec2-user
         key: ${{ secrets.EC2_SSH_KEY }}
         source: "docker-react.tar.gz"
-        target: "/tmp/docker-react.tar.gz"
+        target: "/tmp/"
 
     - name: Load Docker image on EC2 instance
       uses: appleboy/ssh-action@master
