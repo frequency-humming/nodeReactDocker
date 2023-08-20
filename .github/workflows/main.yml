@@ -35,4 +35,4 @@ jobs:
         username: ec2-user
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
-          docker load < /tmp/docker-react.tar.gz
+          cat /tmp/docker-react.tar.gz | docker load
